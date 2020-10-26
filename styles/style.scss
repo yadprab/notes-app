@@ -1,0 +1,279 @@
+@import '../reusable/uti';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+body {
+    list-style: 1.5;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    max-width: var(--max-width-desktop-2);
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-auto-rows: auto;
+    margin: 0 auto;
+    min-height: 100vh;
+    gap: 1rem;
+    position: relative;
+
+}
+
+header {
+
+    @include flex-2;
+    justify-content: flex-start;
+    @include box-shadow-2;
+    background-color: var(--Very-Light-Gray);
+
+
+}
+
+nav {
+    width: 100%;
+    height: 100%;
+
+    ul {
+        @include flex-2;
+        list-style: none;
+
+        li {
+            margin: 2em 0;
+        }
+
+        a {
+            @include links;
+            letter-spacing: 2px;
+            font-size: 1rem;
+            color: var(--Very-Dark-Blue);
+            transition: all 0.5s ease-in;
+
+
+            &:hover {
+                color:  var(--Very-dark-desaturated-blue);
+            }
+        }
+    }
+}
+
+main{
+    padding: 2em;
+    width: 100%;
+    background-color: var(--dark-1);
+    position: relative;
+    overflow: hidden;
+
+  
+}
+.saved{
+    width: 150px;
+    border-radius: 20px;
+
+    background-color: var(--dark-2);
+    color: var(--grey-6);
+    padding: 1em ;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    position: absolute;
+    text-align: center;
+opacity: 0;
+    transition: opacity 0.5s ease-in;
+    transform: translate(-50%, -50%) ;
+  top: 50%;
+  left: 50%;
+ 
+    z-index: 14000;
+
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
+    grid-auto-rows: 200px;
+    gap: 1rem;
+}
+.text-area{
+  
+    border-radius: 10px;
+    @include flex-2;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    @include box-shadow-2;
+
+
+    input{
+       appearance: none;
+        border: none;
+        padding: 0.5em;
+        width: 100%;
+        display: none;
+        height: 60px;
+        background-color: var(--dark-2);
+        color: var(--grey-6);
+        text-transform: capitalize;
+        letter-spacing: 2px;
+        font-size: 1.2rem;
+        
+     
+    }
+
+    textarea{
+        width: 100%;
+        height: 100%;
+       
+        appearance: none;
+        border: none;
+        font-family: var(--font);
+        font-weight: var(--fontFw-1);
+        font-size: 1rem;
+       background-color: var( --major-black);
+        color: var(--grey-6);
+        padding: 0.5em;
+        resize: none;
+    }
+
+}
+
+#add-button{
+    @include svg-button;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius:50% ;
+    z-index: 9000;
+    background-color: var(--red-2);
+    @include box-shadow-3;
+
+
+    svg{
+        width: 50px;
+        height: 30px;
+        pointer-events: none;
+        path{
+            stroke: var(--white-2);
+        }
+      
+
+     
+    }
+}
+
+.button-area{
+    position: absolute;
+  bottom: 0;
+   right: 2px;
+
+   button{
+       z-index: 8000;
+       @include svg-button;
+       cursor: pointer;
+       background-color: unset;
+       svg{
+           pointer-events: none;
+           path{
+            stroke: var(--white-1);
+        }
+
+
+       }
+   }
+
+  
+
+}
+.button-area-1{
+    display: none;
+}
+
+ .overlay{
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 2em;
+  z-index:10000 ;
+  transform: scale(0);
+  background-color: transparent;
+  background: rgba($color: #212121, $alpha: 0.8);
+  transition: transform 0.5s ease-in;
+  animation:  text 0.5s ease-in forwards;
+
+  input{
+      display: block;
+  }
+
+.button-area-1{
+    display: block;
+    top: 0;
+
+    bottom: 100%;
+    
+  
+   
+}
+
+.button-area-2{
+    display: none;
+}
+.close{
+
+    @include svg-button;
+
+    svg{
+        width: 20px;
+        height: 20px;
+        pointer-events: none;
+        path{
+            fill: var(--white-1);
+        }
+    }
+}
+
+ }
+
+ .show{
+     display:block;
+    
+  
+
+ }
+ .saved-show{
+    
+    animation: save 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) forwards  ;
+ }
+
+ 
+ //animations
+
+ @keyframes text{
+     0%{
+         transform: scale(0);
+     }
+     100%{
+         transform: scale(1);
+     }
+ }
+ @keyframes save{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
