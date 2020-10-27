@@ -317,3 +317,46 @@ main {
         opacity: 1;
     }
 }
+
+
+@media only screen and(max-width:500px){
+    body{
+        max-width: var(--max-width-mob);
+        grid-template-areas:
+        "header header" 
+        "main main";
+        grid-auto-rows: 100px 1fr;
+    }
+
+    header{
+        grid-area: header;
+    
+
+ 
+     @include flex-1;
+    flex-direction: row;
+   
+    h1{
+        margin: 0 1em;
+    }
+
+    }
+    main{
+        grid-area: main;
+    }
+
+    nav{
+        display: none;
+      
+        
+        ul{
+            @include flex-1;
+            flex-direction: row;
+            align-items: center;
+            li{
+                margin: 0 1em;
+            }
+          
+        }
+    }
+}
