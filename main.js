@@ -110,7 +110,9 @@ function overlay(){
             trash2.addEventListener('click', removeFn)
             close.addEventListener('click', function(e){
                 e.preventDefault();
-                parent.classList.remove('overlay')
+                parent.classList.remove('overlay');
+                input.setAttribute('disabled', '');
+                txt.setAttribute('disabled', '')
             })
             
 
